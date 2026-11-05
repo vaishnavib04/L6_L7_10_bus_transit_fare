@@ -1,17 +1,31 @@
+
 from hypothesis import given, strategies as st
-from processor import parse_transit_corridor, lookup_concession_discount, compute_passenger_density
+from processor import (
+    parse_transit_corridor,
+    lookup_concession_discount,
+    compute_passenger_density
+)
+
 
 @given(st.text() | st.none())
 def test_parse_transit_corridor_no_crash(s):
-    #To-Do:Using try and except complete this function.
-    pass
+    try:
+        parse_transit_corridor(s)
+    except Exception as e:
+        assert False, f"parse_transit_corridor crashed with input {s!r}: {e}"
+
 
 @given(st.text() | st.none())
 def test_lookup_concession_discount_safe(s):
-    #To-Do:Using try and except complete this function.
-    pass
+    try:
+        lookup_concession_discount(s)
+    except Exception as e:
+        assert False, f"lookup_concession_discount crashed with input {s!r}: {e}"
+
 
 @given(st.text() | st.none())
 def test_compute_passenger_density_safe(s):
-    #To-Do:Using try and except complete this function.
-    pass
+    try:
+        compute_passenger_density(s)
+    except Exception as e:
+        assert False, f"compute_passenger_density crashed with input {s!r}: {e}"
